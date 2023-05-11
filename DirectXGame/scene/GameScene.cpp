@@ -2,6 +2,7 @@
 #include <cassert>
 #include <sstream>
 #include <iomanip>
+#include "FbxLoader.h"
 
 using namespace DirectX;
 
@@ -58,6 +59,9 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	// カメラ注視点をセット
 	camera->SetTarget({0, 1, 0});
 	camera->SetDistance(3.0f);
+
+	//モデル名を指定してファイル読み込み
+	FbxLoader::GetInstance()->LosdModeFromFile("Cube");
 }
 
 void GameScene::Update()
