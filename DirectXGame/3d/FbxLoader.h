@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "fbxsdk.h"
+#include "Model.h"
 #include <string>
 
 #include <d3d12.h>
@@ -25,6 +26,7 @@ public:
 	/// 後始末
 	/// </summary>
 	void Finalize();
+	
 private:
 	//D3D12デバイス
 	ID3D12Device* device = nullptr;
@@ -42,7 +44,12 @@ public:
 	/// </summary>
 	/// <param name="modelName"></param>
 	void LosdModeFromFile(const string& modelName);
-
+	/// <summary>
+	/// 再帰的にノード構成を解析
+	/// </summary>
+	/// <param name="model">読み込み先モデルオブジェクト</param>
+	/// <param name="fbxNode">解析対象のノード</param>
+	void ParseNodeRecursive(Model* model, FbxNode* fbxNode,Node*parent=nullptr);
 private:
 	// privateなコンストラクタ（シングルトンパターン）
 	FbxLoader() = default;
