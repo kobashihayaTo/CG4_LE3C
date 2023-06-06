@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Model.h"
+#include "FbxLoader.h"
 #include "Camera.h"
 
 #include <Windows.h>
@@ -9,6 +10,7 @@
 #include <d3dx12.h>
 #include <DirectXMath.h>
 #include <string>
+
 
 
 class Object3d
@@ -30,6 +32,8 @@ public:
 		XMMATRIX world;
 		XMFLOAT3 cameraPos;
 	};
+
+
 
 public:
 	static void SetDevice(ID3D12Device* device) { Object3d::device = device; }
@@ -58,10 +62,21 @@ public:
 	/// </summary>
 	static void CreateGraphicsPipeline();
 
+public://定数
+	//ボーン最大数
+	static const int MAX_BONES = 32;
+
+	struct ConstBufferDataSkin
+	{
+		XMMATRIX bones[MAX_BONES];
+	};
+
 protected:
 	//定数バッファ
 	ComPtr<ID3D12Resource>constBuffTransform;
-
+	//定数バッファ
+	ComPtr<ID3D12Resource>constBuffSkin;
+	
 protected:
 	//ローカルスケール
 	XMFLOAT3 scale = { 1,1,1 };
