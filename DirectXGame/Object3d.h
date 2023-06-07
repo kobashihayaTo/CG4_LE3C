@@ -62,6 +62,11 @@ public:
 	/// </summary>
 	static void CreateGraphicsPipeline();
 
+	/// <summary>
+	/// アニメーション開始
+	/// </summary>
+	void PlayAnimation();
+
 public://定数
 	//ボーン最大数
 	static const int MAX_BONES = 32;
@@ -89,6 +94,17 @@ protected:
 	//モデル
 	Model* model = nullptr;
 	
+	//1フレームの時間
+	FbxTime frameTime;
+	//アニメーション開始時間
+	FbxTime startTime;
+	//アニメーション終了時間
+	FbxTime endTime;
+	//現在時間
+	FbxTime currentTime;
+	//アニメーション再生中
+	bool isPlay = false;
+
 private:
 	//デバイス
 	static ID3D12Device* device;
