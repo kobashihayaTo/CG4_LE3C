@@ -50,6 +50,7 @@ public:
 private:
 	//ボーン配列
 	std::vector<Bone> bones;
+
 private://エイリアス
 	template<class T>using ComPtr = Microsoft::WRL::ComPtr<T>;
 	//DirectXを省略
@@ -81,6 +82,7 @@ public:
 
 	//getter
 	std::vector<Bone>& GetBones() { return bones; }
+	
 	FbxScene* GetFbxScene() { return fbxScene; }
 
 public:
