@@ -38,7 +38,6 @@ public:
 public:
 	static void SetDevice(ID3D12Device* device) { Object3d::device = device; }
 	static void SetCamera(Camera* camera) { Object3d::camera = camera; }
-
 public:
 
 	/// <summary>
@@ -66,6 +65,8 @@ public:
 	/// アニメーション開始
 	/// </summary>
 	void PlayAnimation();
+
+	void SetRotation(XMFLOAT3 rotation) { this->rotation = rotation; }
 
 public://定数
 	//ボーン最大数
