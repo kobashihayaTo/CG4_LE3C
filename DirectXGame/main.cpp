@@ -54,7 +54,7 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 	ParticleManager::GetInstance()->Initialize(dxCommon->GetDevice());
 
 	//ポストエフェクト用テクスチャの読み込み
-	Sprite::LoadTexture(100, L"Resources/white1x1.png");
+	//Sprite::LoadTexture(100, L"Resources/white1x1.png");
 	//ポストエフェクトの初期化
 	postEffect = new PostEffect();
 	postEffect->Initialize();
@@ -75,6 +75,11 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 		input->Update();
 		// ゲームシーンの毎フレーム処理
 		gameScene->Update();
+
+		//レンダーテクスチャへの描画
+		postEffect->PreDrawScene(dxCommon->GetCommandList());
+		gameScene->Draw();
+		postEffect->PostDrawScene(dxCommon->GetCommandList());
 
 		// 描画開始
 		dxCommon->PreDraw();
