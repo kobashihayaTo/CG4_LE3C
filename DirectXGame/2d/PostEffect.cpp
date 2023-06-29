@@ -370,6 +370,7 @@ void PostEffect::CreateGraphicsPipelineState()
 
 	// スタティックサンプラー
 	CD3DX12_STATIC_SAMPLER_DESC samplerDesc = CD3DX12_STATIC_SAMPLER_DESC(0, D3D12_FILTER_MIN_MAG_MIP_POINT); // s0 レジスタ
+	/*samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;*/
 	samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_BORDER;
 	samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_BORDER;
 	
