@@ -17,7 +17,7 @@ protected://エイリアス
 
 public:
     //テクスチャバッファ
-    ComPtr<ID3D12Resource>texBuff;
+    ComPtr<ID3D12Resource>texBuff[2];
     //SRV用デスクリプタヒープ
     ComPtr<ID3D12DescriptorHeap>descHeapSRV;
 
