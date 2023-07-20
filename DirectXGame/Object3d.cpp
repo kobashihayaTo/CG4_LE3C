@@ -100,7 +100,7 @@ void Object3d::Update()
 	}
 	else
 	{
-		PlayAnimation();
+		//PlayAnimation();
 	}
 
 	//定数バッファへデータ転送

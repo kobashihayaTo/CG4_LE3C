@@ -8,30 +8,34 @@ float4 main(VSOutput input) : SV_TARGET
 {
 	float4 colortex0 = tex0.Sample(smp,input.uv);
 	float4 colortex1 = tex1.Sample(smp,input.uv);
+
+    //ぼかし
     float4 blur = 0.0f;
 
     //テクスチャのサイズを指定
-    int textureWidth = 512;  // テクスチャの幅
-    int textureHeight = 512; // テクスチャの高さ
+    int textureWidth = 1280;  // テクスチャの幅
+    int textureHeight = 720; // テクスチャの高さ
 
     // サンプリング範囲の設定
     float2 texelSize = float2(1.0 / textureWidth, 1.0 / textureHeight);
 
     // サンプリング範囲内のピクセルを合計
-    for (int x = -1; x <= 1; x++)
+    for (int x = -3; x <= 3; x++)
     {
-        for (int y = -1; y <= 1; y++)
+        for (int y = -3; y <= 3; y++)
         {
            blur += tex1.Sample(smp, input.uv+float2(texelSize.x*x, texelSize.y*y));
         }
     }
-    colortex1 = blur / 9.0f;
-   
+    colortex1 = blur / 49.0f;
 
+   //色反転
     float4 color = 1 - colortex0;
+
+    //シマシマ
     if(fmod(input.uv.y,0.1f)<0.05f){
 
-        color = lerp(colortex0, colortex1, 0.4f);
+        color = colortex1;
     }
 
 
