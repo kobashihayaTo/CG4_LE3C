@@ -27,6 +27,7 @@ float4 main(VSOutput input) : SV_TARGET
            blur += tex1.Sample(smp, input.uv+float2(texelSize.x*x, texelSize.y*y));
         }
     }
+    //ここで平均化
     colortex1 = blur / 49.0f;
 
    //色反転
