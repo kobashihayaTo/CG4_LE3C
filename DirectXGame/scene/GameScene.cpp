@@ -19,7 +19,7 @@ GameScene::~GameScene()
 	safe_delete(model1);
 }
 
-void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
+void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio* audio)
 {
 	// nullptrチェック
 	assert(dxCommon);
@@ -36,7 +36,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	// デバッグテキスト用テクスチャ読み込み
 	if (!Sprite::LoadTexture(debugTextTexNumber, L"Resources/debugfont.png")) {
 		assert(0);
-		return ;
+		return;
 	}
 	// デバッグテキスト初期化
 	debugText = DebugText::GetInstance();
@@ -62,7 +62,7 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 
 
 	//モデル名を指定してファイル読み込み
-	model1 = FbxLoader::GetInstance()->LoadModelFromFile("boneTest");
+	model1 = FbxLoader::GetInstance()->LoadModelFromFile("cube");
 
 	//デバイスをセット
 	Object3d::SetDevice(dxCommon->GetDevice());
@@ -77,8 +77,8 @@ void GameScene::Initialize(DirectXCommon* dxCommon, Input* input, Audio * audio)
 	object1->SetModel(model1);
 
 	// カメラ注視点をセット
-	camera->SetTarget({ 0, 2.5f, 0 });
-	camera->SetDistance(8.0f);
+	camera->SetTarget({ 0, 30, 0 });
+	camera->SetDistance(100.0f);
 	object1->SetRotation({ 0,90,0 });
 }
 

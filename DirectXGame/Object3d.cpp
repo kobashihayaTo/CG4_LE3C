@@ -51,7 +51,7 @@ void Object3d::Initialize()
 void Object3d::Update()
 {
 	XMMATRIX matScale, matRot, matTrans;
-	
+
 	//スケール、回転、平行移動行列の計算
 	matScale = XMMatrixScaling(scale.x, scale.y, scale.z);
 	matRot = XMMatrixIdentity();
@@ -88,20 +88,20 @@ void Object3d::Update()
 	std::vector<Model::Bone>& bones = model->GetBones();
 
 	//アニメーション
-	if (isPlay) {
-		//1フレーム進める
-		currentTime += frameTime;
-		//最後まで再生したら先頭に戻す
-		if (currentTime > endTime) {
-			currentTime = startTime;
+	//if (isPlay) {
+	//	//1フレーム進める
+	//	currentTime += frameTime;
+	//	//最後まで再生したら先頭に戻す
+	//	if (currentTime > endTime) {
+	//		currentTime = startTime;
 
-		}
+	//	}
 
-	}
-	else
-	{
-		//PlayAnimation();
-	}
+	//}
+	//else
+	//{
+	//	//PlayAnimation();
+	//}
 
 	//定数バッファへデータ転送
 	ConstBufferDataSkin* constMapSkin = nullptr;
@@ -287,7 +287,7 @@ void Object3d::CreateGraphicsPipeline()
 	rootparams[1].InitAsDescriptorTable(1, &descRangeSRV, D3D12_SHADER_VISIBILITY_ALL);
 	//CBV(スキニング用)
 	rootparams[2].InitAsConstantBufferView(3, 0, D3D12_SHADER_VISIBILITY_ALL);
-	
+
 	// スタティックサンプラー
 	CD3DX12_STATIC_SAMPLER_DESC samplerDesc = CD3DX12_STATIC_SAMPLER_DESC(0);
 	// ルートシグネチャの設定
@@ -308,7 +308,7 @@ void Object3d::CreateGraphicsPipeline()
 	if (FAILED(result)) { assert(0); }
 }
 
-void Object3d::PlayAnimation() 
+void Object3d::PlayAnimation()
 {
 	FbxScene* fbxScene = model->GetFbxScene();
 	//0番のアニメーション
